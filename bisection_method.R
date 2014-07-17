@@ -5,7 +5,7 @@
 
 bisection_univariate_method <- function(f, a, b, tolerance=10e-3)
 {
-  if(sign(a) == sign(b))
+  if(sign(f(a)) == sign(f(b)))
   {
     stop("The interval does not contain a zero for the given function.")
   }
