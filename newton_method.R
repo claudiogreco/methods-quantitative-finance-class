@@ -66,17 +66,17 @@ newton_multivariate_method_demo <- function()
   # which is the gradient of the function g(x, y).
   f <- function(x)
   {
-    x0 <- x[1]
-    x1 <- x[2]
-    c(4 * (x0 - 1)^3, 4 * (x1 - 1)^3)
+    x1 <- x[1]
+    x2 <- x[2]
+    c(4 * (x1 - 1)^3, 4 * (x2 - 1)^3)
   }
 
   # Gradient of the function f(x, y), which we want to solve for f(x, y) = 0.
   f_gradient <- function(x)
   {
-    x0 <- x[1]
-    x1 <- x[2]
-    diag(c(12 * (x0 - 1)^2, 12 * (x1 - 1)^2))
+    x1 <- x[1]
+    x2 <- x[2]
+    diag(c(12 * (x1 - 1)^2, 12 * (x2 - 1)^2))
   }
 
   # Calls the multivariate Newton method.
