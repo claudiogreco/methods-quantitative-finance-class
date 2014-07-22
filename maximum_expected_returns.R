@@ -104,5 +104,6 @@ maximum_expected_returns_optimization_demo <- function()
     print("The solution is not a constrained maximum.")
   }
 
+  # Returns the result.
   result[1:7]
 }
