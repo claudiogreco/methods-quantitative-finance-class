@@ -65,7 +65,9 @@ maximum_expected_returns_optimization <- function(x, mu, Sigma, sigmaP2)
     }
   }
 
-  # Returns the zero of the function G(x, mu, Sigma, sigmaP2).
+  # Returns the zero of the function G(x, mu, Sigma, sigmaP2)
+  # and the flag which specifies if the computed solution
+  # is a constrained maximum of the given optimization problem.
   c(x, is_maximum)
 }
 
