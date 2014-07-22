@@ -10,13 +10,16 @@ newton_univariate_method <- function(f, f_derivative, x0, max_iterations=100)
     stop("The number of iterations must be greater than 0.")
   }
 
+  # Sets the starting point.
   x <- x0
 
+  # Executes the update rule.
   for(i in 1:max_iterations)
   {
     x <- x - f(x) / f_derivative(x)
   }
 
+  # Returns the zero of the given function.
   x
 }
 
@@ -36,7 +39,7 @@ newton_univariate_method_demo <- function()
     2 * x
   }
 
-  # Calls the univariate Newton method.
+  # Calls the Newton univariate method.
   newton_univariate_method(f, f_derivative, 10)
 }
 
@@ -47,13 +50,16 @@ newton_multivariate_method <- function(f, f_gradient, x0, max_iterations=100)
     stop("The number of iterations must be greater than 0.")
   }
 
+  # Sets the starting point.
   x <- x0
 
+  # Executes the update rule.
   for(i in 1:max_iterations)
   {
     x <- x - solve(f_gradient(x), f(x))
   }
 
+  # Returns the zero of the given function.
   x
 }
 
@@ -79,6 +85,6 @@ newton_multivariate_method_demo <- function()
     diag(c(12 * (x1 - 1)^2, 12 * (x2 - 1)^2))
   }
 
-  # Calls the multivariate Newton method.
+  # Calls the Newton multivariate method.
   newton_multivariate_method(f, f_gradient, c(0, 0))
 }
