@@ -47,9 +47,26 @@ maximum_expected_returns_optimization <- function(x, mu, Sigma, sigmaP2)
   {
     x <- x - solve(DG(x, mu, Sigma, sigmaP2), G(x, mu, Sigma, sigmaP2))
   }
-  
+
+  # Computes the eigenvalues of the upper-left n x n block
+  # of the matrix evaluated by DG(x, mu, Sigma, sigmaP2).
+  eigenvalues <- eigen(DG(x, mu, Sigma, sigmaP2)[1:5, 1:5])$values
+
+  is_maximum <- TRUE
+
+  # Checks the second order condition to be sure that
+  # the computed solution is a constrained maximum
+  # of the given optimization problem.
+  for(i in eigenvalues)
+  {
+    if(i > 0)
+    {
+      is_maximum <- FALSE 
+    }
+  }
+
   # Returns the zero of the function G(x, mu, Sigma, sigmaP2).
-  x
+  c(x, is_maximum)
 }
 
 maximum_expected_returns_optimization_demo <- function()
@@ -73,5 +90,17 @@ maximum_expected_returns_optimization_demo <- function()
   sigmaP2 <- 0.25^2
 
   # Calls the Maximum Expected Returns optimization method.
-  maximum_expected_returns_optimization(x, mu, Sigma, sigmaP2)
+  result <- maximum_expected_returns_optimization(x, mu, Sigma, sigmaP2)
+
+  if(result[8] == TRUE)
+  {
+    print("The solution is a constrained maximum.")
+  }
+
+  else
+  {
+    print("The solution is not a constrained maximum.")
+  }
+
+  result[1:7]
 }
