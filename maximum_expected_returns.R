@@ -2,6 +2,7 @@
 # Coursera's Mathematical Methods for Quantitative Finance.
 # Solution of the Maximum Expected Returns optimization problem
 # using Lagrangian multipliers plus the Newton method.
+#
 
 script.dir <- dirname(sys.frame(1)$ofile)
 

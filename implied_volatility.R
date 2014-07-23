@@ -5,6 +5,7 @@
 # for the price of a European call option equation using:
 # - The bisection method
 # - The Newton method
+#
 
 script.dir <- dirname(sys.frame(1)$ofile)
 
